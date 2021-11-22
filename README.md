@@ -6,7 +6,7 @@ A launcher designed to work with Project Nova
 
 Project Nova is a project designed to allow for offline lan play of various steam games.
 
-The project can be found here https://projectnova.us/community/resources/nova-simple-launcher.20/
+The project can be found here https://projectnova.reactiongaming.us/community/resources/nova-simple-launcher.20/
 
 This Launcher is designed to launch any game Project Nova supports, it dynamically changes its interface based on the game it detects.
 

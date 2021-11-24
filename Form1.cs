@@ -866,7 +866,6 @@ namespace Project_Nova_Launcher
 
             var p = new Process();
             p.StartInfo.FileName = Path.GetFullPath(xlabsExec);
-            MessageBox.Show(xlabsExec);
             //if(xlabsGameExe == "iw6x.exe") p.StartInfo.Arguments = "start %localappdata%\\xlabs\\data\\iw6x\\iw6x.exe";
             //if(xlabsGameExe == "s1x.exe")  p.StartInfo.Arguments = "start %localappdata%\\xlabs\\data\\s1x\\s1x.exe";
 

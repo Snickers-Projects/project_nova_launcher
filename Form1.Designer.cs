@@ -67,6 +67,7 @@
             this.buttonXlabsMultiplayer = new System.Windows.Forms.Button();
             this.buttonXlabSingleplayer = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.buttonXlabsOpenFolder = new System.Windows.Forms.Button();
             this.tabControlMain.SuspendLayout();
             this.tabPageMain.SuspendLayout();
             this.tabPagePlaylistGeneral.SuspendLayout();
@@ -401,6 +402,7 @@
             // 
             // tabPageXlabs
             // 
+            this.tabPageXlabs.Controls.Add(this.buttonXlabsOpenFolder);
             this.tabPageXlabs.Controls.Add(this.textBoxProfileDetails);
             this.tabPageXlabs.Controls.Add(this.buttonProfileCopyLabsToAyria);
             this.tabPageXlabs.Controls.Add(this.buttonProfileCopyNovaXlabs);
@@ -510,6 +512,16 @@
             this.linkLabel1.Text = "X Labs Website";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
+            // buttonXlabsOpenFolder
+            // 
+            this.buttonXlabsOpenFolder.Location = new System.Drawing.Point(281, 246);
+            this.buttonXlabsOpenFolder.Name = "buttonXlabsOpenFolder";
+            this.buttonXlabsOpenFolder.Size = new System.Drawing.Size(145, 23);
+            this.buttonXlabsOpenFolder.TabIndex = 9;
+            this.buttonXlabsOpenFolder.Text = "Open X Labs Local Folder";
+            this.buttonXlabsOpenFolder.UseVisualStyleBackColor = true;
+            this.buttonXlabsOpenFolder.Click += new System.EventHandler(this.buttonXlabsOpenFolder_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -579,6 +591,7 @@
         private System.Windows.Forms.Button buttonIdGenerate;
         private System.Windows.Forms.ComboBox comboBoxID;
         private System.Windows.Forms.TextBox textBoxProfileDetails;
+        private System.Windows.Forms.Button buttonXlabsOpenFolder;
     }
 }
 

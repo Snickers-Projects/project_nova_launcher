@@ -28,6 +28,7 @@ namespace Project_Nova_Launcher
         private string current_playlist_file = "";
         private string game_arch             = "Unknown";
         private string xlabsExec             = "Unknown";
+        private string xlabsGameExe          = "";
 
         static Random random = new Random();
 
@@ -657,6 +658,17 @@ namespace Project_Nova_Launcher
             buttonXlabsSpecial.Visible     = false;
             buttonXlabsCoop.Visible        = false;
             buttonXlabsLauncher.Visible    = false;
+            buttonXlabsOpenFolder.Visible  = false;
+
+            if (File.Exists("xlabs.exe")) // New launcher
+            {
+                xlabsExec = "xlabs.exe";
+
+                if (Game == "Call of Duty Ghosts")           xlabsGameExe = "iw6x.exe";
+                if (Game == "Call of Duty Advanced Warfare") xlabsGameExe = "s1x.exe";
+
+                buttonXlabsLauncher.Visible = true;
+            }
 
             if (File.Exists("s1x.exe")) // Call of Duty Advanced Warfare
             {
@@ -678,8 +690,14 @@ namespace Project_Nova_Launcher
                 buttonXlabsMultiplayer.Visible = true;
             }
 
+            string localapppath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 
-            if(xlabsExec == "Unknown")
+            if (Directory.Exists(localapppath+"\\xlabs"))
+            {
+                buttonXlabsOpenFolder.Visible = true;
+            }
+
+            if (xlabsExec == "Unknown")
             {
                 tabControlMain.TabPages.Remove(tabPageXlabs);
             }
@@ -842,9 +860,30 @@ namespace Project_Nova_Launcher
         private void buttonXlabsLauncher_Click(object sender, EventArgs e)
         {
             save_all();
+            //set GAME_EXE =% localappdata %\xlabs\data\iw6x\iw6x.exe
+            //Process.Start(Path.GetFullPath(xlabsExec));
+           // Environment.Exit(0);
 
-            Process.Start(Path.GetFullPath(xlabsExec));
+            var p = new Process();
+            p.StartInfo.FileName = Path.GetFullPath(xlabsExec);
+            MessageBox.Show(xlabsExec);
+            //if(xlabsGameExe == "iw6x.exe") p.StartInfo.Arguments = "start %localappdata%\\xlabs\\data\\iw6x\\iw6x.exe";
+            //if(xlabsGameExe == "s1x.exe")  p.StartInfo.Arguments = "start %localappdata%\\xlabs\\data\\s1x\\s1x.exe";
+
+            p.Start();
             Environment.Exit(0);
+        }
+
+        private void buttonXlabsOpenFolder_Click(object sender, EventArgs e)
+        {
+            string localapppath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+
+            Process.Start(new ProcessStartInfo()
+            {
+                FileName = localapppath+"\\xlabs",
+                UseShellExecute = true,
+                Verb = "open"
+            });
         }
     }
 }

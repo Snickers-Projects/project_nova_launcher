@@ -360,12 +360,12 @@ namespace Project_Nova_Launcher
 
         private void linkProject_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://projectnova.us/");
+            System.Diagnostics.Process.Start("https://projectnova.reactiongaming.us/");
         }
 
         private void linkForum_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://projectnova.us/community/");
+            System.Diagnostics.Process.Start("https://projectnova.reactiongaming.us/community/");
         }
 
         private void get_playlists()

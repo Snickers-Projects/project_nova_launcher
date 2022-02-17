@@ -660,12 +660,21 @@ namespace Project_Nova_Launcher
             buttonXlabsLauncher.Visible    = false;
             buttonXlabsOpenFolder.Visible  = false;
 
+            string localapppath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+
+
+            if (Game == "Call of Duty Ghosts")
+            {
+                xlabsGameExe = localapppath + "\\xlabs\\data\\iw6x\\iw6x.exe";
+            }
+            if (Game == "Call of Duty Advanced Warfare")
+            {
+                xlabsGameExe = localapppath + "\\xlabs\\data\\s1x\\s1x.exe";
+            }
+
             if (File.Exists("xlabs.exe")) // New launcher
             {
                 xlabsExec = "xlabs.exe";
-
-                if (Game == "Call of Duty Ghosts")           xlabsGameExe = "iw6x.exe";
-                if (Game == "Call of Duty Advanced Warfare") xlabsGameExe = "s1x.exe";
 
                 buttonXlabsLauncher.Visible = true;
             }
@@ -679,6 +688,8 @@ namespace Project_Nova_Launcher
                 buttonXlabsMultiplayer.Visible = true;
                 buttonXlabsSpecial.Visible     = true;
                 buttonXlabsCoop.Visible        = true;
+
+                buttonXlabsLauncher.Text = "Open Launcher (Portable Mode)";
             }
 
             if (File.Exists("iw6x.exe")) // Call of Duty Ghosts
@@ -688,13 +699,28 @@ namespace Project_Nova_Launcher
                 buttonXlabsLauncher.Visible    = true;
                 buttonXlabSingleplayer.Visible = true;
                 buttonXlabsMultiplayer.Visible = true;
-            }
 
-            string localapppath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+                buttonXlabsLauncher.Text = "Open Launcher (Portable Mode)";
+            }
 
             if (Directory.Exists(localapppath+"\\xlabs"))
             {
                 buttonXlabsOpenFolder.Visible = true;
+
+                if (Game == "Call of Duty Ghosts")
+                {
+                    buttonXlabsLauncher.Visible = true;
+                    buttonXlabSingleplayer.Visible = true;
+                    buttonXlabsMultiplayer.Visible = true;
+                }
+                if (Game == "Call of Duty Advanced Warfare")
+                {
+                    buttonXlabsLauncher.Visible = true;
+                    buttonXlabSingleplayer.Visible = true;
+                    buttonXlabsMultiplayer.Visible = true;
+                    buttonXlabsSpecial.Visible = true;
+                    buttonXlabsCoop.Visible = true;
+                }
             }
 
             if (xlabsExec == "Unknown")
@@ -710,7 +736,19 @@ namespace Project_Nova_Launcher
             save_all();
 
             var p = new Process();
-            p.StartInfo.FileName = Path.GetFullPath(xlabsExec);
+            p.StartInfo.EnvironmentVariables["XLABS_AW_INSTALL"] = Directory.GetCurrentDirectory();
+            p.StartInfo.EnvironmentVariables["XLABS_GHOSTS_INSTALL"] = Directory.GetCurrentDirectory();
+            p.StartInfo.UseShellExecute = false;
+
+            if (xlabsExec == "xlabs.exe")
+            {
+                p.StartInfo.FileName = Path.GetFullPath(xlabsGameExe);
+            }
+            else
+            {
+                p.StartInfo.FileName = Path.GetFullPath(xlabsExec);
+            }
+            
             p.StartInfo.Arguments = "-singleplayer";
 
             p.Start();
@@ -722,7 +760,19 @@ namespace Project_Nova_Launcher
             save_all();
 
             var p = new Process();
-            p.StartInfo.FileName = Path.GetFullPath(xlabsExec);
+            p.StartInfo.EnvironmentVariables["XLABS_AW_INSTALL"]     = Directory.GetCurrentDirectory();
+            p.StartInfo.EnvironmentVariables["XLABS_GHOSTS_INSTALL"] = Directory.GetCurrentDirectory();
+            p.StartInfo.UseShellExecute = false;
+
+            if (xlabsExec == "xlabs.exe")
+            {
+                p.StartInfo.FileName = Path.GetFullPath(xlabsGameExe);
+            }
+            else
+            {
+                p.StartInfo.FileName = Path.GetFullPath(xlabsExec);
+            }
+
             p.StartInfo.Arguments = "-multiplayer";
 
             p.Start();
@@ -734,7 +784,19 @@ namespace Project_Nova_Launcher
             save_all();
 
             var p = new Process();
-            p.StartInfo.FileName = Path.GetFullPath(xlabsExec);
+            p.StartInfo.EnvironmentVariables["XLABS_AW_INSTALL"] = Directory.GetCurrentDirectory();
+            p.StartInfo.EnvironmentVariables["XLABS_GHOSTS_INSTALL"] = Directory.GetCurrentDirectory();
+            p.StartInfo.UseShellExecute = false;
+
+            if (xlabsExec == "xlabs.exe")
+            {
+                p.StartInfo.FileName = Path.GetFullPath(xlabsGameExe);
+            }
+            else
+            {
+                p.StartInfo.FileName = Path.GetFullPath(xlabsExec);
+            }
+
             p.StartInfo.Arguments = "-zombies";
 
             p.Start();
@@ -746,7 +808,19 @@ namespace Project_Nova_Launcher
             save_all();
 
             var p = new Process();
-            p.StartInfo.FileName = Path.GetFullPath(xlabsExec);
+            p.StartInfo.EnvironmentVariables["XLABS_AW_INSTALL"] = Directory.GetCurrentDirectory();
+            p.StartInfo.EnvironmentVariables["XLABS_GHOSTS_INSTALL"] = Directory.GetCurrentDirectory();
+            p.StartInfo.UseShellExecute = false;
+
+            if (xlabsExec == "xlabs.exe")
+            {
+                p.StartInfo.FileName = Path.GetFullPath(xlabsGameExe);
+            }
+            else
+            {
+                p.StartInfo.FileName = Path.GetFullPath(xlabsExec);
+            }
+
             p.StartInfo.Arguments = "-survival";
 
             p.Start();
@@ -860,14 +934,21 @@ namespace Project_Nova_Launcher
         private void buttonXlabsLauncher_Click(object sender, EventArgs e)
         {
             save_all();
-            //set GAME_EXE =% localappdata %\xlabs\data\iw6x\iw6x.exe
-            //Process.Start(Path.GetFullPath(xlabsExec));
-           // Environment.Exit(0);
-
             var p = new Process();
-            p.StartInfo.FileName = Path.GetFullPath(xlabsExec);
-            //if(xlabsGameExe == "iw6x.exe") p.StartInfo.Arguments = "start %localappdata%\\xlabs\\data\\iw6x\\iw6x.exe";
-            //if(xlabsGameExe == "s1x.exe")  p.StartInfo.Arguments = "start %localappdata%\\xlabs\\data\\s1x\\s1x.exe";
+
+
+            p.StartInfo.EnvironmentVariables["XLABS_AW_INSTALL"] = Directory.GetCurrentDirectory();
+            p.StartInfo.EnvironmentVariables["XLABS_GHOSTS_INSTALL"] = Directory.GetCurrentDirectory();
+            p.StartInfo.UseShellExecute = false;
+
+            if (xlabsExec == "xlabs.exe")
+            {
+                p.StartInfo.FileName = Path.GetFullPath(xlabsGameExe);
+            }
+            else
+            {
+                p.StartInfo.FileName = Path.GetFullPath(xlabsExec);
+            }
 
             p.Start();
             Environment.Exit(0);
@@ -884,5 +965,6 @@ namespace Project_Nova_Launcher
                 Verb = "open"
             });
         }
+
     }
 }

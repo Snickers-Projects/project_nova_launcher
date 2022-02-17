@@ -58,6 +58,7 @@
             this.buttonCreatePlaylistFolder = new System.Windows.Forms.Button();
             this.textBoxNoPlaylist = new System.Windows.Forms.TextBox();
             this.tabPageXlabs = new System.Windows.Forms.TabPage();
+            this.buttonXlabsOpenFolder = new System.Windows.Forms.Button();
             this.textBoxProfileDetails = new System.Windows.Forms.TextBox();
             this.buttonProfileCopyLabsToAyria = new System.Windows.Forms.Button();
             this.buttonProfileCopyNovaXlabs = new System.Windows.Forms.Button();
@@ -67,7 +68,6 @@
             this.buttonXlabsMultiplayer = new System.Windows.Forms.Button();
             this.buttonXlabSingleplayer = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.buttonXlabsOpenFolder = new System.Windows.Forms.Button();
             this.tabControlMain.SuspendLayout();
             this.tabPageMain.SuspendLayout();
             this.tabPagePlaylistGeneral.SuspendLayout();
@@ -239,7 +239,7 @@
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(63, 13);
             this.labelVersion.TabIndex = 11;
-            this.labelVersion.Text = "Version: 2.0";
+            this.labelVersion.Text = "Version: 2.2";
             // 
             // linkAriaID
             // 
@@ -419,6 +419,16 @@
             this.tabPageXlabs.Text = "X Labs Control";
             this.tabPageXlabs.UseVisualStyleBackColor = true;
             // 
+            // buttonXlabsOpenFolder
+            // 
+            this.buttonXlabsOpenFolder.Location = new System.Drawing.Point(281, 246);
+            this.buttonXlabsOpenFolder.Name = "buttonXlabsOpenFolder";
+            this.buttonXlabsOpenFolder.Size = new System.Drawing.Size(145, 23);
+            this.buttonXlabsOpenFolder.TabIndex = 9;
+            this.buttonXlabsOpenFolder.Text = "Open X Labs Local Folder";
+            this.buttonXlabsOpenFolder.UseVisualStyleBackColor = true;
+            this.buttonXlabsOpenFolder.Click += new System.EventHandler(this.buttonXlabsOpenFolder_Click);
+            // 
             // textBoxProfileDetails
             // 
             this.textBoxProfileDetails.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -511,16 +521,6 @@
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "X Labs Website";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
-            // buttonXlabsOpenFolder
-            // 
-            this.buttonXlabsOpenFolder.Location = new System.Drawing.Point(281, 246);
-            this.buttonXlabsOpenFolder.Name = "buttonXlabsOpenFolder";
-            this.buttonXlabsOpenFolder.Size = new System.Drawing.Size(145, 23);
-            this.buttonXlabsOpenFolder.TabIndex = 9;
-            this.buttonXlabsOpenFolder.Text = "Open X Labs Local Folder";
-            this.buttonXlabsOpenFolder.UseVisualStyleBackColor = true;
-            this.buttonXlabsOpenFolder.Click += new System.EventHandler(this.buttonXlabsOpenFolder_Click);
             // 
             // Form1
             // 

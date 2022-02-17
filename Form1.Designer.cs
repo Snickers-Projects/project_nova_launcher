@@ -239,7 +239,7 @@
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(63, 13);
             this.labelVersion.TabIndex = 11;
-            this.labelVersion.Text = "Version: 2.2";
+            this.labelVersion.Text = "Version: 2.4";
             // 
             // linkAriaID
             // 
